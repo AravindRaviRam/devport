@@ -1,0 +1,13 @@
+
+
+.tabHead{
+	margin: 20px;
+	padding: 20px;
+	    -webkit-box-shadow: 0 5px 3px -3px #777;
+       -moz-box-shadow: 0 5px 3px -3px #777;
+            box-shadow: 0 5px 3px -3px #777;
+	background: white;
+	width: 100%;
+	font-weight: bold;
+	color:#00365c;
+}

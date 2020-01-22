@@ -1,0 +1,13 @@
+.tabCell{
+	margin: 20px;
+	padding: 20px;
+	    -webkit-box-shadow: 0 5px 3px -3px #777;
+       -moz-box-shadow: 0 5px 3px -3px #777;
+            box-shadow: 0 5px 3px -3px #777;
+            border-radius: 10px;
+	background: white;
+	color:#333333;
+	width: 100%;
+	font-weight: 600;
+
+}

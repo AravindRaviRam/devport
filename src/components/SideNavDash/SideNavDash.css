@@ -1,0 +1,31 @@
+.SideNavDash{
+height: 100%;
+margin-top: 76px;
+  width: 300px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #00365C;
+  overflow-x: hidden;
+  padding-top: 20px;
+/*  		-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;*/
+	       /* box-shadow: 8px 6px -6px 0 black;*/
+	        box-shadow: 5px 0 5px -5px #333;
+}
+.SideNavDash ul{
+	padding: 0;
+}
+
+.SideNavDash ul li{
+	color: white;
+	text-transform:uppercase;
+	font-weight:700px;
+	padding: 10px;
+	margin: 10px;
+	width: 100%;
+	font-size: 18px;
+	list-style-type: none;
+}
