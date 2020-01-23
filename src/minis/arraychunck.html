@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array Chunck</title>
+	<style type="text/css">
+		#pagination li{
+			display: inline;
+			padding: 10px;
+			border:1px solid black;
+			margin: 10px;
+		}
+		
+	</style>
+</head>
+<body>
+
+<div class="list"></div>
+
+<div id="pagination"></div>
+
+
+<script type="text/javascript">
+//empty array
+let arr=[]
+//creating new array
+const newArray=(start,end)=>{
+	for(let i=start; i<=end; i++){
+		arr.push(i)
+	}
+	return arr;
+}
+//calling new array function
+newArray(1,100)
+// check the arrav
+//chunck an array in to pieces
+const chunk=(array,size)=>{
+const chunked_arr=[];
+	let index=0;
+	while(index<array.length){
+		chunked_arr.push(array.slice(index,size+index))
+		index +=size;
+	}
+	return chunked_arr;
+}
+
+var state={
+	'querySet':arr,
+	'page':1,
+	'rows':5,
+	'window':5,
+}
+
+
+
+
+
+let chunked= chunk(arr,10);
+// let page=document.getElementById("pagination")
+// let html="<ul>"
+// const GenTable=()=>{
+// 	let Table=[];
+// 	for(let r=1;r<=chunked.length; r++){
+
+// 		html +="<li>"+r+"</li>"
+// 	}
+// }
+// html += "</ul>"
+
+// GenTable();
+// page.innerHTML=html;
+
+const pagination=(querySet,page,rows)=>{
+	let trimStart=(page-1)* rows
+	let trimeEnd=trimStart+rows
+	let pages=Math.round(querySet.length/rows);
+	console.log("pagination ",pages)
+	return{
+		'pages':pages
+	}
+
+}
+
+const pageButtons=(pages)=>{
+let warpper=document.getElementById('pagination')
+	warpper.innerHTML=``
+	console.log('pages', pages)
+	let maxLeft=(state.page-Math.floor(state.window/2))
+	let maxRight=(state.page+Math.floor(state.window/2))
+console.log("maxLeft ", maxLeft)
+console.log("maxRight ", maxRight)
+
+if(maxLeft<1){
+	maxLeft=1
+	maxRight=state.window
+}
+
+if(maxRight>pages){
+	maxLeft=pages - (state.window - 1)
+	if(maxLeft < 1){
+		maxLeft=1
+	}
+	maxRight=pages
+}
+
+
+for(let page=maxLeft; page <= maxRight; page++){
+	warpper.innerHTML +=`<button value=${page}>${page}</button>`
+}
+
+if(state.page !=1){
+	warpper.innerHTML='<button value=${page}>&#171; First</button>'
+}
+if(state.page !=pages){
+	warpper.innerHTML +='<button value=${page}>Last &#187;</button>'
+}
+
+
+
+}
+
+
+
+
+const buildTable=()=>{
+	let Table=document.getElementById('#')
+}
+
+let data=pagination(state.querySet, state.page, state.rows)
+pageButtons(data.pages)
+
+
+</script>
+</body>
+</html>
