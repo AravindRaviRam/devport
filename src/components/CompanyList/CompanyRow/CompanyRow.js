@@ -6,7 +6,7 @@ import './CompanyRow.css'
 
 const CompanyRow=({SNO,ComName,Category,Norms,State})=>{
 	return(
-		<div className="container">
+		<div className="container-fluid">
 		<div className="row tabCell">
 			<div className="col-md-2">{SNO}</div>
 			<div className="col-md-3">{ComName}</div>

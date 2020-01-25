@@ -1330,7 +1330,7 @@ var state = {
 
     'page': 1,
     'rows': 5,
-    'window': 5,
+    'window': 10,
 }
 
 
@@ -1371,13 +1371,21 @@ function pageButtons(pages) {
         maxRight = state.window
     }
 
+
+
+
     if (maxRight > pages) {
+
         maxLeft = pages - (state.window - 1)
         
+
         if (maxLeft < 1){
         	maxLeft = 1
         }
         maxRight = pages
+
+
+
     }
     
     

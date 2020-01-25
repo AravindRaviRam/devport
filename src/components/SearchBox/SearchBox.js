@@ -6,7 +6,7 @@ const SearchBox=({onSearchChange})=>{
 		<div className="text-center">
 			<input 
 				type='search' 
-				className="p-3 w-25 border border-dark"
+				className="p-3 w-25 border border-dark m-3"
 				placeholder='Search Company'
 				onChange={onSearchChange}
 
