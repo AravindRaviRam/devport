@@ -18,7 +18,7 @@ class App extends Component{
         querySet:[],
         searchfield:'',
         'page':1,
-        'rows':10,
+        'rows':20,
         'window':10
 
     }
@@ -36,15 +36,19 @@ onSearchChange=(event)=>{
 }
 
 
+
+pageButton=(pages)=>{
+
+return console.log(pages)
+}
+
+
+
 pagination=(querySet,page,rows)=>{
   let trimStart=(page-1)*rows
   let trimEnd=trimStart + rows
   let trimmedData=querySet.slice(trimStart,trimEnd)
   let pages=Math.round(querySet.length/rows);
-  // console.log("trimStart",trimStart)
-  // console.log("trimEnd",trimEnd)
-  // console.log("trimmedData",trimmedData)
-  // console.log("pages",pages)
 
   return{
     'querySet':trimmedData,
@@ -54,11 +58,14 @@ pagination=(querySet,page,rows)=>{
 }
 
 
+
+
 buildTable=(table)=>{
 
   let data=this.pagination(table,this.state.page,this.state.rows)
-  console.log(data.querySet)
- return data.querySet;
+  // console.log(data.querySet)
+  this.pageButton(data.pages)
+  return data.querySet
 
 
 }
@@ -71,6 +78,7 @@ render(){
     return company.companyName.toLowerCase().includes(searchfield.toLowerCase())
 
   })
+
 
 
 
@@ -90,9 +98,9 @@ render(){
         <Scroll>
          { 
 
-          <CompanyList objCompanyCat={this.buildTable(filterValues)} />
+            <CompanyList objCompanyCat={this.buildTable(filterValues)} />
 
-        }
+         }
         </Scroll>
          }
         
