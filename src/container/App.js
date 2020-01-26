@@ -19,7 +19,8 @@ class App extends Component{
         searchfield:'',
         'page':1,
         'rows':20,
-        'window':10
+        'window':10,
+
 
     }
   }
@@ -38,8 +39,27 @@ onSearchChange=(event)=>{
 
 
 pageButton=(pages)=>{
+    let maxLeft=(this.state.page - Math.floor(this.state.window/2))
+    let maxRight=(this.state.page + Math.floor(this.state.window/2))
 
-return console.log(pages)
+    if(maxLeft<1){
+        maxLeft=1
+        maxRight=this.state.window
+      }
+
+    if(maxRight>pages){
+      maxLeft=pages- (this.state.window-1)
+      // if it is 0
+      if(maxLeft<1){
+          maxLeft=1
+      }
+      maxRight=pages
+    }
+
+    return{
+      'maxLeft':maxLeft,
+      'maxRight':maxRight
+    }
 }
 
 
@@ -61,13 +81,10 @@ pagination=(querySet,page,rows)=>{
 
 
 buildTable=(table)=>{
-
   let data=this.pagination(table,this.state.page,this.state.rows)
   // console.log(data.querySet)
   this.pageButton(data.pages)
   return data.querySet
-
-
 }
 
 

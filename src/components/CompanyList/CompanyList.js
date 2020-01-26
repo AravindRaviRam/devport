@@ -1,35 +1,34 @@
 import React from 'react'; 
 import './CompanyList.css'
 import CompanyRow from './CompanyRow/CompanyRow';
-
+import PageButtons from './PageButtons/PageButtons';
 
 const CompanyList=({objCompanyCat})=>{
+
+	const pagination=(totalpages)=>{
+		let pageNum=[]
+		for(let i=1; i<=totalpages; i++){pageNum.push(<PageButtons key={i} PageValue={i} />)}
+		return pageNum;
+	}
+
 	return(
 		<div className="container-fluid">
 			{
 				objCompanyCat.map((li,i)=>{
-
 					return(
-						<CompanyRow key={i} SNO={li.sno} ComName={li.companyName} Category={li.category} Norms={li.norms} State={li.state}/>
+							<CompanyRow key={i} SNO={li.sno} ComName={li.companyName} Category={li.category} Norms={li.norms} State={li.state}/>
 						)
 				})
-				
 			}
-
 			<div>
-			 <table>
-			 	<tr>
-			 		<td>1</td>
-			 		<td>2</td>
-			 		<td>3</td>
-			 		<td>4</td>
-			 		<td>5</td>
-			 		<td>6</td>
-			 		<td>7</td>
-			 		<td>8</td>
-			 		<td>9</td>
-			 	</tr>
-			 </table>
+				<table>
+					<tbody>
+						<tr>
+							{pagination(10)}
+						</tr>				
+					</tbody>
+
+				</table>
 			</div>	
 		</div>
 		)}
