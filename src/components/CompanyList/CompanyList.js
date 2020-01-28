@@ -1,16 +1,8 @@
 import React from 'react'; 
 import './CompanyList.css'
 import CompanyRow from './CompanyRow/CompanyRow';
-import PageButtons from './PageButtons/PageButtons';
 
 const CompanyList=({objCompanyCat})=>{
-
-	const pagination=(totalpages)=>{
-		let pageNum=[]
-		for(let i=1; i<=totalpages; i++){pageNum.push(<PageButtons key={i} PageValue={i} />)}
-		return pageNum;
-	}
-
 	return(
 		<div className="container-fluid">
 			{
@@ -20,16 +12,9 @@ const CompanyList=({objCompanyCat})=>{
 						)
 				})
 			}
-			<div>
-				<table>
-					<tbody>
-						<tr>
-							{pagination(10)}
-						</tr>				
-					</tbody>
-
-				</table>
-			</div>	
+				<div className="container">
+					<div id="pagination-wrapper"></div>
+				</div>
 		</div>
 		)}
 

@@ -39,7 +39,10 @@ onSearchChange=(event)=>{
 
 
 pageButton=(pages)=>{
-    let maxLeft=(this.state.page - Math.floor(this.state.window/2))
+    let wrapper=document.getElementById('pagination-wrapper')
+    if(wrapper != null){
+          console.log(wrapper)
+        let maxLeft=(this.state.page - Math.floor(this.state.window/2))
     let maxRight=(this.state.page + Math.floor(this.state.window/2))
 
     if(maxLeft<1){
@@ -55,11 +58,32 @@ pageButton=(pages)=>{
       }
       maxRight=pages
     }
+console.log(maxRight)
+console.log(maxLeft)
+  for(let page=maxLeft; page<=maxRight; page++){
+    // console.log("page", page)
+    wrapper.innerHTML +=`<button class='page' value=${page} onclick="this.setState({page:page}); return false"> ${page}</button>`
+  }
 
-    return{
-      'maxLeft':maxLeft,
-      'maxRight':maxRight
+// adding first
+
+if(this.state.page !=1){
+    wrapper.innerHTML=`<button class='page' value=${1}>&#171; First</button>`+ wrapper.innerHTML
+}
+
+  //adding last 
+  if(this.state.page !=pages){
+    wrapper.innerHTML +=`<button class='page' value=${pages}>LAST &#187</button>`
+  }
+
+
+
+
+
+
     }
+    
+
 }
 
 
@@ -82,7 +106,7 @@ pagination=(querySet,page,rows)=>{
 
 buildTable=(table)=>{
   let data=this.pagination(table,this.state.page,this.state.rows)
-  // console.log(data.querySet)
+  console.log(data.querySet)
   this.pageButton(data.pages)
   return data.querySet
 }
