@@ -1,0 +1,44 @@
+import {List, AutoSizer }from "react-virtualized"
+
+<AutoSizer>
+{
+	({width, height})=>{
+		return <span>width:{width}px height:{height}px </span>
+	}
+}
+</AutoSizer>
+
+
+
+
+renderRow=({index,isScrolling,key,style})=>{
+return(
+
+<div key={key} style={style}>
+
+
+</div>
+
+
+)
+}
+
+
+<AutoSizer>
+{
+	({width, height})=>{
+		return <List 
+				rowCount={this.props.data.length}
+				width={width}
+				height={height}
+				rowHeight={50}
+				rowRender={this.renderRow}
+					
+			/>
+	}
+}
+</AutoSizer>
+
+
+
+this.state.querySet[index].companyName
